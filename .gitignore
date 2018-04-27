@@ -51,7 +51,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-.gitignore
 .idea/cd_workshop_lab2.iml
 .idea/inspectionProfiles/
 .idea/markdown-navigator/
