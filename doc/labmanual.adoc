@@ -1,0 +1,215 @@
+= Continuous Integration and Continuous Delivery Fundamentals : Lab 1
+Tennis Smith <tennis@roundtower.com>
+1.0
+:toc:
+:icons: font
+:quick-uri: http://www.roundtower.com
+
+
+
+== Prerequisites
+// tag::prerequisites[]
+Students will need a computer with:
+
+*	SSH
+*	Web Browser (Chrome, Safari, Firefox)
+// end::prerequisites[]
+
+== Credentials, Links, etc.
+// tag::creds[]
+Systems & Credentials:
+
+* roundtower Training Portal (http://goo.gl/SRGcuX)
+
+** User: _TRAINER PROVIDED_
+
+** Password:  _TRAINER PROVIDED_
+
+* Developer Desktop (http://gitlab.localdomain)
+
+** User: _student_
+
+** Password: _roundtower_
+
+* GitLab (http://gitlab.localdomain)
+
+** User: _student_
+
+** Password: _roundtowerstudent_
+
+* Jenkins (http://jenkins.localdomain:8080)
+
+** User: _student_
+
+** Password: _roundtower_
+
+* GitLab (http://gitlab.localdomain)
+
+** User: _student_
+
+** Password: _roundtowerstudent_
+
+// end::creds[]
+
+== Lab 1
+// tag::procedure[]
+=== Step 1: Log Into the Desktop
+* Using a web browser, connect to the roundtower Training Portal, using the credentials provided by your trainer:
+[source]
+http://goo.gl/SRGcuX
+
+* You will see the lab environment listed as:
+[source]
+CICD-Training-v11
+
+* Under the "Actions" heading, select *_View_*.
+* In this view you will see the systems in your lab environment.  Find the VM named *_Developer Desktop_* and open the virtual console by clicking the *_Console_* button.
+
+TIP:  Pop-up Blockers are known to interfere with the virtual console.  If you aren't able to open the virtual console, disable any pop-up blockers and try again.
+
+* Log into the Developer Desktop using the credentials specified above.
+
+=== Step 2: Log Into GitLab
+* On the developer desktop, open Firefox.  (A link is provided in the dock on the left of the screen.)
+* Connect to GitLab, using the credentials listed above:
+[source]
+http://gitlab.localdomain/
+
+* You are now connected to GitLab.  This system is your source code management and collaboration tool.
+* On your dashboard, select the project *_Administrator/Lab1_*.
+* In the left sidebar, select *_Issues_*.
+* Click on the issue *_Story: New Content for Site_*.
+
+=== Step 3: Review the User Story
+* In this lab, you will assume the role of a developer.  The user story *_Story: New Content for Site_* has been assigned to you.  Take a moment to review the the content of the user story.
+* Before you alter the site content, you must set up your Continuous Integration toolchain.
+
+=== Step 4: Set Up Continuous Integration Toolchain
+* On the Developer Desktop, open a new tab in Firefox
+* Connect to Jenkins, using the credentials listed above:
+[source]
+http://jenkins.localdomain:8080
+
+* Click the *_New Item_* link in the left side menu.
+* Name the new pipeline *_Lab1_*.
+* Select the *_Pipeline_* option to define the job type.
+* Select *_OK_*.
+* On the next page, select the option *_GitHub project_*, and enter the following in the *_Project url_* field:
+
+[source]
+http://gitlab.localdomain/root/Lab1
+
+* Ensure that *_Student GitLab_* is selected for *_GitLab connection_*.  If it isn't, please select it from the dropdown list.
+* Select the option *_Build when a change is pushed to GitLab_*.  Accept the default selections.
+* Under the *_Pipeline_* heading, select *_Pipeline script from SCM_*.  For *_SCM_*, select *_Git_*.  For *_Repository URL_*, enter the following:
+
+[source]
+http://gitlab.localdomain/root/Lab1.git
+
+* Select *_Save_*.  Your continuous integration pipeline is now configured.
+* Verify that everything is working properly by selecting *_Build Now_*.
+
+=== Step 5: Get the Source Code for the Feature
+* Now that you Continuous Integration toolchain is working properly, you can begin the development process.
+* First, you must clone your project's source code repository.
+* On the Developer Desktop, open the Terminal.  (A link is provided in the dock on the left of the screen.)
+* To clone the source code repository, type the following command:
+
+[source]
+git clone http://gitlab.localdomain/root/Lab1.git
+
+* Change your working directory to your source code repository
+
+[source]
+cd Lab1
+
+=== Step 6:  Develop the Tests
+* Before you alter the source code, you must first develop unit tests.  For this lab, you will alter existing tests to verify that your new content is present.
+* First, change your working directory to the "tests" directory
+
+[source]
+cd tests
+
+* In this directory are two tests: *_index-test_* and *_layout-test_*. First, you will modify *_index-test_*:
+
+[source]
+nano index-test.txt
+
+* In this file, you define the content that must be present in the site.  Replace these two lines with the requested content from Scenario 1 & 2 of the User Story.
+* _Remember, the text you specify here will be looked for *exactly* the new site, so aware of spaces and capitalization._
+
+TIP:  You can save a file by pressing "ctrl+O".  You can close a file by pressing "ctrl+X".
+
+* Now, alter the second test with the requested content from Scenario 3 & 4 of the User Story.
+
+[source]
+nano layout-test.txt
+
+* Now that the tests are complete, you can alter the site content.
+
+=== Step 7:  Alter the Site Content
+* Now you can alter the site content.  To begin, change your working directory:
+
+[source]
+cd ..
+cd src/site/views
+
+* Now you alter the index with the requested content from Scenario 1 & 2 from the user story.
+
+[source]
+nano index.jade
+
+* Once that is complete, alter the layout with the requested content from Scenario 3 & 4.
+
+[source]
+nano layout.jade
+
+=== Step 8:  Commit Changes and Push to Central Repository
+Now that your site has been modified to according to the user story, you can commit your changes and push them to GitLab.
+* First, change the working directory.
+
+[source]
+cd ~/Lab1
+
+* Next, add all altered files to the change set.
+
+[source]
+git add .
+
+* Next, commit the changes.
+
+[source]
+git commit -m "Issue #1 - Tests Altered, Feature Complete"
+
+* Last, push the change to GitLab.
+
+[source]
+git push
+
+* This push will trigger the continuous integration system (Jenkins) to build and test the change.  You can observe it's progress by switching back to Firefox.
+* By hovering over each phase of the pipeline, you can view the logs for that phase.
+* If any phase of your pipeline fails, utilize the logs to identify the error.  Please ask your trainer for assistance if required.
+// end::procedure[]
+
+
+//
+//
+//
+//
+//  RESOURCE SNIPS - NOTHING BELOW HERE WILL BE RENDERED
+//
+// [source]
+// $ brew install asciidoc
+//
+// ====
+// _This is an italicized admonition_
+// ====
+//
+// TIP:  Don’t eat the yellow snow.
+//
+// WARNING:  Weasels are bitey.
+//
+// ====
+// *This is something you _REALLY_ should know*
+// ====
+//
