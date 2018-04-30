@@ -14,5 +14,5 @@ node {
    // The next stage creates a file with our bulid information in it
    stage 'Create S3 file'
 
-   dir('registry') {sh "./promote.sh training1"}
+   dir('registry') {sh "./promote.sh training99"}
 }
