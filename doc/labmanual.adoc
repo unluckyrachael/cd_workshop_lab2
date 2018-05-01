@@ -18,10 +18,16 @@ Students will need a computer with:
 == Lab 2
 // tag::procedure[]
 
-Lab2 will extract the tag of the latest docker image (1 below) in the registry and then stage it to an s3 bucket (2 below). On each instance, there is a cron job that will read the s3 bucket once per minute (3 below).  If the tag in the bucket is newer than the currently-running website, then the instance will pull an image from the registry (4 below).
-The idea is to provide a way for Jenkins to control when a training instance updates to a new version of the website.
+Lab2 will extract the tag of the latest docker image (1 below) in the registry
+and then stage it to an s3 bucket (2 below). On each instance, there is a
+cron job that will read the s3 bucket once per minute (3 below).  If the tag
+in the bucket is newer than the currently-running website, then the instance
+will pull an image from the registry (4 below). Then, the training instance will restart
+the website with the new docker image (5 below). The idea is to provide a way
+for Jenkins to control when a training instance updates to a new version of the
+website.
 
-image:common/adoc/images/cd_workshop_lab2_topo.png[]
+image:common/adoc/images/cd_workshop_lab2_sequence.png[]
 
 
 === Step 1: Login to GitHub
