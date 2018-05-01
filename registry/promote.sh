@@ -4,7 +4,7 @@
 # install the latest docker image based on that tag.
 #
 #
-set -e
+set -e -o pipefail
 
 # Get the latest tag from the registry
 tag=$(curl http://registry.roundtower.io:5000/v2/${1}/lab1/tags/list | jq -r .tags[] | sort | tail -1)
