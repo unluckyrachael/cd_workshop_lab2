@@ -112,6 +112,7 @@ image:common/adoc/images/pipeline_run_output.png[]
 
 * You should see something like this
 
+image:common/adoc/images/web_screen.png[]
 
 
 
