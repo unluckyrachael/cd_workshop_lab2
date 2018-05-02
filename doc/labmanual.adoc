@@ -120,6 +120,26 @@ image:common/adoc/images/pipeline_run_output.png[]
 
 image:common/adoc/images/web_screen.png[]
 
+=== Step 8: Trigger lab2 build on completion of lab1 build
+
+* Click on `trainingX_lab2` on the main dashboard.
+
+* Now click on `Configure` on the left side of the screen. This will take you back
+to the configuration options for lab2's pipeline
+
+* Scroll down to `Build Triggers` and click on `Build after other projects are built`
+(it is the first option in the list).
+
+* In the `Projects to watch` field, put in the name of your lab1 pipeline.  For
+example, if your training ID is `training2`, then the lab1 pipelne will be named
+`training2_lab1`. Make sure that `Trigger only if build is stable` is selected
+too.
+
+image:common/adoc/images/build_trigger_lab2.png[]
+
+* Click on `Save` and exit the configuration.
+
+* From now on, lab2 will build *only if* your lab1 pipeline builds successfully.
 
 
 // end::procedure[]
