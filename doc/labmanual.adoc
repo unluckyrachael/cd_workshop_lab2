@@ -49,13 +49,13 @@ image:common/adoc/images/open_powershell.png[]
 * Make a local copy of the repo by cloning it with the following command
 
 [source]
-git clone https://github.com/<your user name>/cd_workshop_lab2.git
+git clone https://github.com/<your user name>/cd_workshop_lab2.git lab2
 
 
 === Step 4: Update the Jenkinsfile
 * Go to the home directory of your new repo
 [source]
-cd cd_workshop_lab2
+cd lab2
 
 * Now edit the file `Jenkinsfile`
 [source]
@@ -70,7 +70,7 @@ atom Jenkinsfile
 * First, change the working directory.
 
 [source]
-cd ~/cd_workshop_lab2
+cd ~/lab2
 
 * Next, add all altered files to the change set.
 
@@ -148,7 +148,7 @@ Now we are going to update the website itself and the unit tests that verify tho
 * Go back to your *lab 1* directory
 
 [source]
-cd cd_workshop_lab1
+cd ~/lab1
 
 * Edit `src/site/views/layout.jade`
 
@@ -180,28 +180,23 @@ git commit -m "updated header and unit test"
 [source]
 git push
 
+=== Step 10: Checking website for updates
+
+* The `push` in step 9 should have kicked off a new build for your `trainingX_lab1` pipeline.
+
+* When that lab1 build completed, it should have kicked off a new lab 2 pipeline build.
+
+* Go to your website at `training<your number>.roundtower.io`.
+
+* The `Home` tab should now have your training ID next to it.  Example
+image:common/adoc/images/website_updated_home.png[]
+
+* Congratulations! You've completed the Labs!
+
+
+=== Step 11: Extra credit
+
+* Rerun steps 9/10 and change other fields in the web page.
+
 // end::procedure[]
 
-
-
-//
-//
-//
-//
-//  RESOURCE SNIPS - NOTHING BELOW HERE WILL BE RENDERED
-//
-// [source]
-// $ brew install asciidoc
-//
-// ====
-// _This is an italicized admonition_
-// ====
-//
-// TIP:  Don’t eat the yellow snow.
-//
-// WARNING:  Weasels are bitey.
-//
-// ====
-// *This is something you _REALLY_ should know*
-// ====
-//
