@@ -120,7 +120,7 @@ image:common/adoc/images/pipeline_run_output.png[]
 
 image:common/adoc/images/web_screen.png[]
 
-=== Step 8: Trigger lab2 build on completion of lab1 build
+=== Step 8: Setup trigger of lab2 build on completion of lab1 build
 
 * Click on `trainingX_lab2` on the main dashboard.
 
@@ -141,6 +141,44 @@ image:common/adoc/images/build_trigger_lab2.png[]
 
 * From now on, lab2 will build *only if* your lab1 pipeline builds successfully.
 
+=== Step 9: Update website unit test and source
+
+Now we are going to update the website itself and the unit tests that verify those changes.
+
+* Go back to your *lab 1* directory
+
+[source]
+cd cd_workshop_lab1
+
+* Edit `src/site/views/layout.jade`
+
+[source]
+atom src\site\views\layout.jade
+
+* Replace `REPLACE THIS TITLE` with your training ID. Then save and exit the file.
+
+image:common/adoc/images/edit_layout_dot_jade.png[]
+
+* Now edit `tests/layout-test.txt` to update the test for the new layout.
+[source]
+atom tests/layout-test.txt
+
+* Edit the top line and make it *exactly* like the line from `layout.jade` you
+edited in previous steps. Save and exit the file.
+
+image:common/adoc/images/edit_layout_dash_test_dot_txt.png[]
+
+* Now, add your latest changes to the changelist
+[source]
+git add .
+
+* Commit your changes to the local repository
+[source]
+git commit -m "updated header and unit test"
+
+* Finally, push your changes back to GitHub's repository
+[source]
+git push
 
 // end::procedure[]
 
