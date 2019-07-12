@@ -1,9 +1,24 @@
 = Continuous Delivery: Lab 2
-Tennis Smith <tennis@roundtower.com>
-1.0
+Tennis Smith
+v1.1, 2019-07-12
+:organization: RoundTower Technologies
+:doctype: book
+// Settings:
+:experimental:
+:reproducible:
+:icons: font
+:listing-caption: Listing
 :toc:
-:http://icons[icons][]: font
-:quick-uri: http://www.roundtower.com
+:toclevels: 1
+ifeval::["{asciidoctor-version}" < "1.5.7"]
+:legacy-footnoteref:
+endif::[]
+ifdef::backend-pdf[]
+:pdf-theme: common
+:pdf-themesdir: {docdir}
+:title-logo-image: image:common/adoc/images/roundtower.png[pdfwidth=4.25in,align=center]
+:source-highlighter: rouge
+endif::[]
 
 
 
